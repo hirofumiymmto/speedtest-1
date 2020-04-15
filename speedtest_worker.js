@@ -316,9 +316,10 @@ function getIp(done) {
 	xhr.send();
 }
 // download test, calls done function when it's over
-var dlCalled = false; // used to prevent multiple accidental calls to dlTest
+var dlCalled = true; // used to prevent multiple accidental calls to dlTest
 function dlTest(done) {
 	tverb("dlTest");
+	done();
 	if (dlCalled) return;
 	else dlCalled = true; // dlTest already called?
 	var totLoaded = 0.0, // total number of loaded bytes
@@ -423,8 +424,9 @@ function dlTest(done) {
 	);
 }
 // upload test, calls done function whent it's over
-var ulCalled = false; // used to prevent multiple accidental calls to ulTest
+var ulCalled = true; // used to prevent multiple accidental calls to ulTest
 function ulTest(done) {
+	done();
 	tverb("ulTest");
 	if (ulCalled) return;
 	else ulCalled = true; // ulTest already called?
